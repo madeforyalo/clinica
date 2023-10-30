@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    <title>Secretaría</title>
+    <title>Login</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
 
@@ -19,12 +20,26 @@
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 </head>
-<body>
-    <div class="m-3">
-        <a href="pacientes.php" class="btn-primary"><button class="btn-primary">Agregar pacientes</button></a>
-    </div>
-    <div>
-        <a href="turnos.php"><button class="btn-primary">Agregar turnos</button></a>
-    </div>
+
+<body class="text-center">
+    <form class="form-signin" method="get" action="login.php">
+        <img class="mb-4" src="https://cdn.icon-icons.com/icons2/1465/PNG/512/588hospital_100778.png" alt="" width="72"
+            height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Inicie sesion</h1>
+        <!-- <label for="inputEmail" class="sr-only">Usuario</label> -->
+        <input type="text" class="form-control" placeholder="Usuario" name="usuario" required="" autofocus="">
+        <!-- <label for="inputPassword" class="sr-only">Password</label> -->
+        <input type="password" class="form-control" placeholder="Password" name="pass" required="">
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> recuerdeme
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+        
+    </form>
+
+
 </body>
+
 </html>

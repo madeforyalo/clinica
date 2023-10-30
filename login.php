@@ -3,7 +3,6 @@
   $contra=$_GET['pass'];
 
   require "conexion.php";
-
   $conn=conectar();
   $sql="SELECT * FROM usuarios where usu_usuario='$nombre'";
 
@@ -14,12 +13,7 @@
   if(mysqli_affected_rows($conn)>0){
 
     if($contra==$registro['usu_pass']){
-      echo "iniciar sesion";
-      session_start();
-      $_SESSION['id']=$registro['usu_id'];
-      $_SESSION['nombre']=$registro['usu_nombre'];
-      $_SESSION['tipoUsuario']=$registro['usu_rol'];
-
+     
       switch($registro['usu_rol']){
         case 1:
           header("Location:admin.php");

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <title>Login</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Turnos</h1>
+    </div>
+    <div class="row">
+
+        <div class="col-2"></div>
+
+        <form action="" method="post" class="form-control col-8 p-4">
+            <div class="row">
+                <div class="col-3">
+                    <label for="txtDni">Ingrese DNI paciente</label>
+                    <input type="text" name="txtDni" id="txtDni" placeholder="DNI" class="form-control shadow mt-3"  
+                        title="DNI" required>
+                </div>
+            
+                <div class="col" style="margin-top: 40px;">
+                    <button type="submit" class="btn btn-primary ">Buscar</button>
+                </div>
+            </div>   
+            <div class="row">
+                <div class="mt-4 col-4">
+                    <input type="text" class="form-control shadow" placeholder="nombre y apellido" disabled > 
+                </div> 
+                <div class="mt-4 col-3">  
+                    <input type="text" class="form-control shadow" placeholder="telefono" disabled>
+                </div> 
+                <div class="mt-4 col">
+                    <input type="text" class="form-control shadow" placeholder="Mail" disabled>
+                </div>
+            </div>
+
+            <div class="row mt-5 mb-4">
+                <div class="col-3">
+                    <label for="especialidad">Especialidad:  </label>
+                    <select name="especialidad" id="especialidad" class="form-control shadow">
+                        <option selected disabled value="0">Seleccione una especialidad...</option>
+                        <?php while($row=mysqli_fetch_assoc($query)){ ?>
+                        <option value="<?php echo $row['esp_id'];?>"><?php echo $row['esp_nom'];?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <label for="profecional">Profecional:  </label>
+                    <select name="profecional" id="profecional" class="form-control shadow">
+                        <option selected disabled value="0">Seleccione un Profecional...</option>
+                        <?php while($row=mysqli_fetch_assoc($query)){ ?>
+                        <option value="<?php echo $row['doc_id'];?>"><?php echo $row['doc_nom'] & echo " " & echo $row['doc_ape'];?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" name="fecha">
+                    <br>
+
+                    <label for="hora">Hora:</label>
+                    <select name="hora">
+                        <!-- Genera opciones para las horas desde 8:00 hasta 18:00 -->
+                        <?php
+                        for ($hora = 8; $hora < 18; $hora++) {
+                            for ($minuto = 0; $minuto < 60; $minuto += 30) {
+                                $horaFormateada = str_pad($hora, 2, '0', STR_PAD_LEFT) . ":" . str_pad($minuto, 2, '0', STR_PAD_LEFT);
+                                echo "<option value='$horaFormateada'>$horaFormateada</option>";
+                            }
+                        }
+                        ?>
+                    </select>
+                    <br>
+
+                    <input type="submit" value="Agregar Turno">
+                </div>
+            </div>
+        </form>
+
+        <div class="col-2"></div>
+    </div>
+</div>    
+</body>
+
+</html>
