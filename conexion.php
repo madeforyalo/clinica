@@ -21,12 +21,25 @@ function todo(){
 }
 
 function buscar(){
-    $conn=conexion();
+    $conn=conectar();
     $buscar=$_GET['txtBuscar'];
     $sql= "SELECT * FROM pacientes WHERE pac_id=$buscar;";
     $query=mysqli_query ($conn, $sql);
     return $query;
 } 
 
+function especialidad(){
+    $conn=conectar();
+    $sql= "SELECT * FROM especialidades";
+    $query=mysqli_query ($conn, $sql);
+    return $query;
+}
+
+function doctor(){
+    $conn=conectar();
+    $sql= "SELECT * FROM doctor";
+    $query=mysqli_query ($conn, $sql);
+    return $query;
+}
 
 ?>

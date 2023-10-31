@@ -21,10 +21,10 @@
 </head>
 <body>
     <div class="m-3">
-        <a href="pacientes.php" class="btn-primary"><button class="btn-primary">Agregar pacientes</button></a>
+        <a href="pacientes.php" class="btn btn-primary" role="button">Agregar pacientes</a>
     </div>
     <div>
-        <a href="turnos.php"><button class="btn-primary">Agregar turnos</button></a>
+        <a href="turnos.php" role="button" class="btn btn-primary">Agregar turnos</a>
     </div>
 </body>
 </html>
