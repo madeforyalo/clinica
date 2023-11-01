@@ -42,4 +42,17 @@ function doctor(){
     return $query;
 }
 
+function turnos(){
+    $conn=conectar();
+    $sql= "SELECT turnos.tur_id, pacientes.pac_dni, pacientes.pac_ape, pacientes.pac_nom,
+    especialidades.esp_nom, doctor.doc_ape, doctor.doc_nom, tur_fecha, tur_hora
+    FROM turnos
+    INNER JOIN pacientes ON turnos.tur_pas = pacientes.pac_id
+    INNER JOIN especialidades ON turnos.tur_esp = especialidades.esp_id
+    INNER JOIN doctor ON turnos.tur_doc = doctor.doc_id;";
+    $query=mysqli_query ($conn, $sql);
+    return $query;
+
+}
+
 ?>

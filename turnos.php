@@ -52,8 +52,10 @@
                     $sql= "SELECT * FROM pacientes WHERE pac_dni = $dni";
                     $query=mysqli_query ($conn, $sql);
                     $registro=mysqli_fetch_assoc($query);
-                        if(mysqli_affected_rows($conn)>0){ ?>
+                        if(mysqli_affected_rows($conn)>0){
+                            $pac_id= $registro['pac_id']; ?>
                             <div class="row">
+                                <div><input type="text" name="paciente" value="<?php echo $registro['pac_id'];?>" style="display: none;"></div>
                                 <div class="mt-4 col-3">  
                                     <input type="text" class="form-control shadow" placeholder="<?php echo $registro['pac_dni'];?>" disabled>
                                 </div>
@@ -81,12 +83,12 @@
 
                     <?php }
                     
-                } 
+                }  
                 $esp = especialidad();
                 $prof = doctor();
             ?>   
             
-
+        
             <div class="row mt-5 mb-4">
                 <div class="col-3">
                     <label for="especialidad">Especialidad:  </label>
@@ -117,7 +119,7 @@
                         <?php
                         for ($hora = 8; $hora < 18; $hora++) {
                             for ($minuto = 0; $minuto < 60; $minuto += 30) {
-                                $horaFormateada = str_pad($hora, 2, '0', STR_PAD_LEFT) . ":" . str_pad($minuto, 2, '0', STR_PAD_LEFT);
+                                $horaFormateada = str_pad($hora, 2, '0', STR_PAD_LEFT) . ":" . str_pad($minuto, 2, '0', STR_PAD_LEFT) . ":00";
                                 echo "<option value='$horaFormateada'>$horaFormateada</option>";
                             }
                         }
@@ -127,7 +129,7 @@
                 <div class="row">
                     
                     <div class="col mt-5">
-                        <input type="submit" value="Agregar Turno" class="btn btn-primary">
+                        <button type="submit" name="agregueTurno" class="btn btn-primary">agregar turno</button>
                     </div>
                     <div class="col mt-5" >
                         <a href="secretarie.php" class="btn btn-primary" role="button">Volver</a>
@@ -135,9 +137,69 @@
                 </div>
                 </div>
             </div>
-        </form>
+            <?php
 
+        if(isset($_POST['agregueTurno'])){
+            $pac=$_POST['paciente'];
+            $doc=$_POST['profesional'];
+            $esp=$_POST['especialidad'];
+            $fecha=$_POST['fecha'];
+            $hora=$_POST['hora'];
+
+            $sqlTurno="INSERT INTO turnos VALUE (null, $doc, $pac, $esp, '$fecha', '$hora')";
+            $queryTurno = mysqli_query($conn, $sqlTurno);
+
+            // if ($queryTurno){
+            //     Header("location: turnos.php");
+            // };
+        }
+            $turno=turnos();
+
+        ?>
+        </form>
         <div class="col-2"></div>
+        
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="table">
+                <table class="table shadow" >
+                    <thead class="table-dark table-striped">
+                        <tr>
+                            <th>ID</th>
+                            <th>DNI</th>
+                            <th>Paciente</th>
+                            <th>Especialidad</th>
+                            <th>Doctor</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            while($registro=mysqli_fetch_array($turno)){ //muestra las filas relacionadas con la posicion
+                        ?>
+                                <tr>
+                                    <td><?php echo $registro[0]?></td>
+                                    <td><?php echo $registro[1]?></td>
+                                    <td><?php echo $registro[2] . " " . $registro[3]?></td>
+                                    <td><?php echo $registro[4]?></td>
+                                    <td><?php echo $registro[5] . " " . $registro[6]?></td>
+                                    <td><?php echo $registro[7]?></td>
+                                    <td><?php echo $registro[8]?></td>
+                                    <td><a href="actualizar.php?id=<?php echo $registro[0]?>" title="Editar" style="margin-right: 15px" ><i class="fa-solid fa-marker"></i></a>                                            
+                                    <a href="ver.php?id=<?php echo $registro[0]?>" method="get" title="Borrar"><i class="fa-solid fa-trash-can" style="color: red;"></i></a></td>                                            
+                                </tr>
+                        <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>    
 </body>
