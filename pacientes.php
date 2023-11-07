@@ -97,46 +97,46 @@
                     }                               
                 ?>
                 
-                <div class="col-12 col-sm-8">
-                      
-                        <div class="table">
-                            <table class="table shadow" >
-                                <thead class="table-dark table-striped">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>DNI</th>
-                                        <th>Fecha de nacimiento</th>
-                                        <th>Genero</th>
-                                        <th>Telefono</th>
-                                        <th>Mail</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        while($registro=mysqli_fetch_array($bcr)){ //muestra las filas relacionadas con la posicion
-                                    ?>
-                                            <tr>
-                                                <td><?php echo $registro[0]?></td>
-                                                <td><?php echo $registro[1]?></td>
-                                                <td><?php echo $registro[2]?></td>
-                                                <td><?php echo $registro[3]?></td>
-                                                <td><?php echo $registro[4]?></td>
-                                                <td><?php echo $registro[5]?></td>
-                                                <td><?php echo $registro[6]?></td>
-                                                <td><?php echo $registro[7]?></td>
-                                                <td><a href="actualizar.php?id=<?php echo $registro[0]?>" title="Editar" style="margin-right: 15px" ><i class="fa-solid fa-marker"></i></a>                                            
-                                                <a href="ver.php?id=<?php echo $registro[0]?>" method="get" title="Borrar"><i class="fa-solid fa-trash-can" style="color: red;"></i></a></td>                                            
-                                            </tr>
-                                    <?php
-                                        }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                </div>
+            </div>
+            <div class="col-12 col-sm-8">
+                  
+                    <div class="table">
+                        <table class="table shadow" >
+                            <thead class="table-dark table-striped">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>DNI</th>
+                                    <th>Fecha de nacimiento</th>
+                                    <th>Genero</th>
+                                    <th>Telefono</th>
+                                    <th>Mail</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    while($registro=mysqli_fetch_array($bcr)){ //muestra las filas relacionadas con la posicion
+                                ?>
+                                        <tr>
+                                            <td><?php echo $registro[0]?></td>
+                                            <td><?php echo $registro[1]?></td>
+                                            <td><?php echo $registro[2]?></td>
+                                            <td><?php echo $registro[3]?></td>
+                                            <td><?php echo $registro[4]?></td>
+                                            <td><?php echo $registro[5]?></td>
+                                            <td><?php echo $registro[6]?></td>
+                                            <td><?php echo $registro[7]?></td>
+                                            <td><a href="actualizar.php?id=<?php echo $registro[0]?>" title="Editar" style="margin-right: 15px" ><i class="fa-solid fa-marker"></i></a>                                            
+                                            <a href="ver.php?id=<?php echo $registro[0]?>" method="get" title="Borrar"><i class="fa-solid fa-trash-can" style="color: red;"></i></a></td>                                            
+                                        </tr>
+                                <?php
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
             </div>
 </body>
 </html>
