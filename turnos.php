@@ -139,68 +139,69 @@
             </div>
             <?php
 
-        if(isset($_POST['agregueTurno'])){
-            $pac=$_POST['paciente'];
-            $doc=$_POST['profesional'];
-            $esp=$_POST['especialidad'];
-            $fecha=$_POST['fecha'];
-            $hora=$_POST['hora'];
+            if(isset($_POST['agregueTurno'])){
+                $pac=$_POST['paciente'];
+                $doc=$_POST['profesional'];
+                $esp=$_POST['especialidad'];
+                $fecha=$_POST['fecha'];
+                $hora=$_POST['hora'];
 
-            $sqlTurno="INSERT INTO turnos VALUE (null, $doc, $pac, $esp, '$fecha', '$hora')";
-            $queryTurno = mysqli_query($conn, $sqlTurno);
+                $sqlTurno="INSERT INTO turnos VALUE (null, $doc, $pac, $esp, '$fecha', '$hora')";
+                $queryTurno = mysqli_query($conn, $sqlTurno);
 
-            // if ($queryTurno){
-            //     Header("location: turnos.php");
-            // };
-        }
+            }
             $turno=turnos();
 
-        ?>
+            ?>
         </form>
         <div class="col-2"></div>
         
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="table">
-                <table class="table shadow" >
-                    <thead class="table-dark table-striped">
-                        <tr>
-                            <th>ID</th>
-                            <th>DNI</th>
-                            <th>Paciente</th>
-                            <th>Especialidad</th>
-                            <th>Doctor</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            while($registro=mysqli_fetch_array($turno)){ //muestra las filas relacionadas con la posicion
-                        ?>
-                                <tr>
-                                    <td><?php echo $registro[0]?></td>
-                                    <td><?php echo $registro[1]?></td>
-                                    <td><?php echo $registro[2] . " " . $registro[3]?></td>
-                                    <td><?php echo $registro[4]?></td>
-                                    <td><?php echo $registro[5] . " " . $registro[6]?></td>
-                                    <td><?php echo $registro[7]?></td>
-                                    <td><?php echo $registro[8]?></td>
-                                    <td><a href="actualizar.php?id=<?php echo $registro[0]?>" title="Editar" style="margin-right: 15px" ><i class="fa-solid fa-marker"></i></a>                                            
-                                    <a href="ver.php?id=<?php echo $registro[0]?>" method="get" title="Borrar"><i class="fa-solid fa-trash-can" style="color: red;"></i></a></td>                                            
-                                </tr>
-                        <?php
-                            }
-                        ?>
-                    </tbody>
-                </table>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="table">
+                    <table class="table shadow" >
+                        <thead class="table-dark table-striped">
+                            <tr>
+                                <th>ID</th>
+                                <th>DNI</th>
+                                <th>Paciente</th>
+                                <th>Especialidad</th>
+                                <th>Doctor</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                while($registro=mysqli_fetch_array($turno)){ //muestra las filas relacionadas con la posicion
+                            ?>
+                                    <tr>
+                                        <td><?php echo $registro[0]?></td>
+                                        <td><?php echo $registro[1]?></td>
+                                        <td><?php echo $registro[2] . " " . $registro[3]?></td>
+                                        <td><?php echo $registro[4]?></td>
+                                        <td><?php echo $registro[5] . " " . $registro[6]?></td>
+                                        <td><?php echo $registro[7]?></td>
+                                        <td><?php echo $registro[8]?></td>
+                                        <td><a href="actualizar.php?id=<?php echo $registro[0]?>" title="Editar" style="margin-right: 15px" ><i class="fa-solid fa-marker"></i></a>                                            
+                                        <a href="ver.php?id=<?php echo $registro[0]?>" method="get" title="Borrar"><i class="fa-solid fa-trash-can" style="color: red;"></i></a></td>                                            
+                                    </tr>
+                            <?php
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+</div>
+    
+
+</div>
+
+
+    
 </div>    
 </body>
 
