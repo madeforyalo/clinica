@@ -59,8 +59,11 @@
                                 class="form-control shadow" title="Fecha de nacimiento" required >
                         </div>
                         <div class="pb-3">
-                            <input type="text" name="txtGenero" id="txtGenero" placeholder="Genero M o F"
-                                class="form-control shadow" title="Genero" required >
+                            <select name="txtGenero" id="" class="form-control shadow" title="Genero" required>
+                                <option value="" disable>Seleccione Genero</option>
+                                <option value="F">Femenino</option>
+                                <option value="M">Masculino</option>
+                            </select>
                         </div>
                         <!-- <div class="pb-3">
                             <input type="text" name="txtDireccion" id="txtDireccion" placeholder="Direccion"
