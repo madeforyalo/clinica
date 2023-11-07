@@ -79,13 +79,13 @@
                         </div>
                         <div>
                             <button type="submit" id="btnAgregar" name="btnAgregar" class="btn btn-primary" style="margin-right: 25px;">Agregar</button>
-                            <input type="text" name="txtBuscar" id="txtBuscar" placeholder="Buscar por ID de paciente"
+                            <!-- <input type="text" name="txtBuscar" id="txtBuscar" placeholder="Buscar por ID de paciente"
                                 class="form-control shadow" title="Buscar por ID de paciente" style="width: 50%;display: inline;">
                             <button type="submit" id="btnBuscar" name="btnBuscar" class="btn btn-primary" formaction="" formmethod="get">Buscar</button>
                         </div>
                         <div>
                             <a class="btn btn-primary" href="secretarie.php" role="button" style="margin-top: 10px;">Volver</a>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
                 <?php 
@@ -96,6 +96,7 @@
                         $bcr=buscar();
                     }                               
                 ?>
+                
                 <div class="col-12 col-sm-8">
                       
                         <div class="table">
